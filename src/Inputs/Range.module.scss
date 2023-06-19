@@ -1,0 +1,60 @@
+.range {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 265px;
+  line-height: 15px;
+  height: 46px;
+  border: 1px solid black;
+  background: white;
+  color: black;
+  border-radius: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  &--dark {
+    border: 1px solid white;
+    background: #464646;
+    color: white;
+  }
+  &--open {
+    border-bottom: 1px solid transparent;
+    border-radius: 8px 8px 0 0;
+  }
+  &__title {
+    margin: 14px 0 15px 14px;
+  }
+  &__arrow {
+    position: absolute;
+    display: flex;
+    right: 18px;
+    float: right;
+    fill: #b3b3b3;
+  }
+  &__сontainer {
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    width: inherit;
+    top: 45px;
+    border: 1px solid black;
+    padding: 20px 22px;
+    box-sizing: border-box;
+    border-radius: 0 0 8px 8px;
+    background: white;
+    z-index: 1;
+    &--dark {
+      border: 1px solid white;
+      background: #464646;
+      color: white;
+    }
+    &--open {
+      border-top: none;
+      display: flex;
+    }
+  }
+}

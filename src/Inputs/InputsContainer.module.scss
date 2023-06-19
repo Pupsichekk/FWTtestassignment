@@ -1,0 +1,12 @@
+.inputs-container {
+  display: flex;
+  margin-bottom: 40px;
+  // justify-content: space-between;
+  gap: 3rem;
+}
+
+.line {
+  height: 1px;
+  width: 50px;
+  background-color: black;
+}
