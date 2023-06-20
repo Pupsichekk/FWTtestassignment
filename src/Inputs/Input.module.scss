@@ -15,11 +15,15 @@
     width: inherit;
   }
 
-  &--dark::placeholder {
+  &--dark::placeholder,
+  &--dark:-moz-placeholder,
+  &--dark::-moz-placeholder {
     color: white;
   }
 
-  &--light::placeholder {
+  &--light::placeholder,
+  &--dark:-moz-placeholder,
+  &--dark::-moz-placeholder {
     color: black;
   }
 
