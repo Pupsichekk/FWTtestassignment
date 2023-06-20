@@ -10,11 +10,12 @@
   padding: 100px;
   font-family: "Rubik", sans-serif;
   width: 100%;
-  @media screen and (max-width: 1024px) {
+
+  @media screen and (min-width: 1024px) and (max-width: 1365px) {
     padding: 40px;
   }
 
-  @media screen and (max-width: 320px) {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
     padding: 20px;
   }
 }
