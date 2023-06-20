@@ -15,6 +15,14 @@
     width: inherit;
   }
 
+  &--dark::placeholder {
+    color: white;
+  }
+
+  &--light::placeholder {
+    color: black;
+  }
+
   &--dark {
     color: white;
     border: 1px solid white;

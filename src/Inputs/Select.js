@@ -25,6 +25,7 @@ export const SelectAuthor = (props) => {
       isClearable={props.isClearable}
       onChange={props.authorOnChangeHandler}
       options={authors}
+      placeholder="Author"
       styles={{
         control: (baseStyles) => {
           return {
@@ -46,6 +47,12 @@ export const SelectAuthor = (props) => {
               backgroundColor: `${theme === "dark" ? "white" : "black"}`,
               color: `${theme === "dark" ? "black" : "white"};`,
             },
+          };
+        },
+        placeholder: (baseStyles, state) => {
+          return {
+            ...baseStyles,
+            color: `${theme === "dark" ? "white" : "black"}`,
           };
         },
       }}
@@ -74,6 +81,7 @@ export const SelectLocation = (props) => {
       isClearable={props.isClearable}
       onChange={props.locationOnChangeHandler}
       options={locations}
+      placeholder="Location"
       styles={{
         control: (baseStyles) => {
           return {
@@ -95,6 +103,12 @@ export const SelectLocation = (props) => {
               backgroundColor: `${theme === "dark" ? "white" : "black"}`,
               color: `${theme === "dark" ? "black" : "white"};`,
             },
+          };
+        },
+        placeholder: (baseStyles, state) => {
+          return {
+            ...baseStyles,
+            color: `${theme === "dark" ? "white" : "black"}`,
           };
         },
       }}
