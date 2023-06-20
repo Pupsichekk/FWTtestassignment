@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/FWTtestassignment/static/css/main.2e1ffa79.css",
+    "main.js": "/FWTtestassignment/static/js/main.f224df78.js",
+    "index.html": "/FWTtestassignment/index.html",
+    "main.2e1ffa79.css.map": "/FWTtestassignment/static/css/main.2e1ffa79.css.map",
+    "main.f224df78.js.map": "/FWTtestassignment/static/js/main.f224df78.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2e1ffa79.css",
+    "static/js/main.f224df78.js"
+  ]
+}
