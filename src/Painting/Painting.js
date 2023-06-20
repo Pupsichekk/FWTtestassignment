@@ -20,13 +20,14 @@ const Painting = (props) => {
       const temp = await dispatch(getPaintingAuthor(painting.authorId));
       setAuthor(temp.payload);
     };
+    // Fetching author and location data on component mount
     getLocation();
     getAuthor();
   }, [dispatch, painting.authorId, painting.locationId]);
 
   return (
     <div
-      onClick={() => setIsHovered((prevState) => !prevState)}
+      onClick={() => setIsHovered((prevState) => !prevState)} // for touch screen devices
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
       className={styles.painting}

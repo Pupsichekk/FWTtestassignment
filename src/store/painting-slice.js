@@ -7,18 +7,19 @@ export const fetchPaintingData = createAsyncThunk(
     try {
       let query = "";
       if (isEmpty(filters)) {
-        query = `https://test-front.framework.team/paintings?_page=${page}&_limit=12`;
+        query = `https://test-front.framework.team/paintings?_page=${page}&_limit=12`; // query if no filters are found
       } else {
-        query = `https://test-front.framework.team/paintings?${filters.name && "&q=" + filters.name}${
+        query = `https://test-front.framework.team/paintings?${filters.name && "&q=" + filters.name}${ 
           filters.author && "&authorId=" + filters.author
         }${filters.location && "&locationId=" + filters.location}${
           filters.date && "&created_gte=" + filters.date.from + "&created_lte=" + filters.date.to
         }`;
+        // query if there is at least one filter
       }
       const response = await fetch(query);
       if (!response.ok) throw new Error("Could not fetch painting data");
       const data = await response.json();
-      dispatch(paintingActions.setItems(data));
+      dispatch(paintingActions.setItems(data)); // setting items state 
     } catch (error) {
       console.log(error);
     }

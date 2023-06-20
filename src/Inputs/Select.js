@@ -29,7 +29,7 @@ export const SelectAuthor = (props) => {
         control: (baseStyles) => {
           return {
             ...baseStyles,
-            border: "1px solid black",
+            border: `${theme === "dark" ? "1px solid white" : "1px solid black"}`,
             boxShadow: "none",
             backgroundColor: `${theme === "dark" && "#0C0C0C"}`,
             "&:hover": {
@@ -78,7 +78,7 @@ export const SelectLocation = (props) => {
         control: (baseStyles) => {
           return {
             ...baseStyles,
-            border: "1px solid black",
+            border: `${theme === "dark" ? "1px solid white" : "1px solid black"}`,
             boxShadow: "none",
             backgroundColor: `${theme === "dark" && "#0C0C0C"}`,
             "&:hover": {
