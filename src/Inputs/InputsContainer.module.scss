@@ -3,7 +3,7 @@
   margin-bottom: 40px;
   // justify-content: space-between;
   gap: 30px;
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 550px) {
     flex-direction: column;
     gap: 10px;
   }
