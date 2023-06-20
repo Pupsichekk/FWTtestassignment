@@ -17,22 +17,12 @@
 
   &--dark::placeholder {
     color: white;
-  }
-  &--dark:-moz-placeholder {
-    color: white;
-  }
-  &--dark::-moz-placeholder {
-    color: white;
+    opacity: 1;
   }
 
   &--light::placeholder {
     color: black;
-  }
-  &--light:-moz-placeholder {
-    color: black;
-  }
-  &--light::-moz-placeholder {
-    color: black;
+    opacity: 1; /* Firefox */
   }
 
   &--dark {
