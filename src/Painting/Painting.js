@@ -24,15 +24,13 @@ const Painting = (props) => {
     getAuthor();
   }, [dispatch, painting.authorId, painting.locationId]);
 
-  const onHoverHandler = () => {
-    setIsHovered(true);
-  };
-
-  const onUnhoverHandler = () => {
-    setIsHovered(false);
-  };
   return (
-    <div onMouseEnter={onHoverHandler} onMouseLeave={onUnhoverHandler} className={styles.painting}>
+    <div
+      onClick={() => setIsHovered((prevState) => !prevState)}
+      onMouseOver={() => setIsHovered(true)}
+      onMouseOut={() => setIsHovered(false)}
+      className={styles.painting}
+    >
       <img
         className={styles["painting--img"]}
         src={`https://test-front.framework.team/${painting.imageUrl}`}

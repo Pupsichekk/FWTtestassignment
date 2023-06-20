@@ -5,6 +5,7 @@ import { fetchPaintingData } from "./store/painting-slice";
 import { useSelector, useDispatch } from "react-redux";
 import Paintings from "./Painting/Paintings";
 import InputsContainer from "./Inputs/InputsContainer";
+import Header from "./UI/Header";
 
 function App() {
   const dispatch = useDispatch();
@@ -12,21 +13,21 @@ function App() {
 
   const painting = useSelector((state) => state.painting);
   const curPage = useSelector((state) => state.pagination.curPage);
+  const theme = useSelector((state) => state.theme.theme);
 
-  // fetching painting data dynamically when page changes
+  // fetching painting data dynamically when page or filters change
   useEffect(() => {
-    console.log(curPage, painting.filters);
     setIsLoading(true);
     dispatch(fetchPaintingData({ page: curPage, ...painting.filters })).then((data) => setIsLoading(false));
   }, [curPage, dispatch, painting.filters]);
 
-  const spinner = <div className="loader"></div>;
   return (
-    <div className="App">
-      <InputsContainer />
-      {isLoading ? spinner : <Paintings items={painting.items} />}
-      <Pagination />
-    </div>
+    <main className={`main ${theme === "light" ? "lightTheme" : "darkTheme"}`}>
+      <Header theme={theme} />
+      <InputsContainer theme={theme} />
+      {isLoading ? <div className="loader"></div> : <Paintings items={painting.items} theme={theme} />}
+      <Pagination theme={theme} />
+    </main>
   );
 }
 

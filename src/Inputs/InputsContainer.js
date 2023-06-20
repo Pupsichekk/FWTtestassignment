@@ -7,7 +7,7 @@ import Range from "./Range";
 
 import styles from "./InputsContainer.module.scss";
 
-const InputsContainer = () => {
+const InputsContainer = (props) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [author, setAuthor] = useState("");
@@ -48,9 +48,17 @@ const InputsContainer = () => {
       <SelectAuthor isClearable={true} authorOnChangeHandler={authorOnChangeHandler} />
       <SelectLocation isClearable={true} locationOnChangeHandler={locationOnChangeHandler} />
       <Range datesOnChangeHandler={datesOnChangeHandler}>
-        <Input placeholder="From" type="text" />
+        <input
+          className={`${styles["range-input"]} ${props.theme === "dark" && styles["range-input--dark"]}`}
+          placeholder="From"
+          type="text"
+        />
         <span className={styles.line}></span>
-        <Input placeholder="To" type="text" />
+        <input
+          className={`${styles["range-input"]} ${props.theme === "dark" && styles["range-input--dark"]}`}
+          placeholder="Before"
+          type="text"
+        />
       </Range>
     </div>
   );

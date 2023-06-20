@@ -2,11 +2,32 @@
   display: flex;
   margin-bottom: 40px;
   // justify-content: space-between;
-  gap: 3rem;
+  gap: 30px;
+  @media screen and (max-width: 320px) {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.range-input {
+  border: 1px solid black;
+  border-radius: 8px;
+  outline: none;
+  padding: 15px;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: transparent;
+  width: 100%;
+  display: inline-block;
+  color: black;
+  &--dark {
+    background: white;
+  }
 }
 
 .line {
   height: 1px;
-  width: 50px;
+  width: 25px;
   background-color: black;
 }

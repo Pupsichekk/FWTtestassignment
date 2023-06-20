@@ -1,3 +1,7 @@
 .expand-select {
-  flex: 1 1 auto;
+  flex: 1 1 25%;
+}
+
+.select__control:hover {
+  border-color: black;
 }

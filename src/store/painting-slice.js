@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { isEmpty } from "../helpers/IsEmpty";
-import { useMemo } from "react";
 
 export const fetchPaintingData = createAsyncThunk(
   "painting/fetchPaintingData",
@@ -60,7 +59,6 @@ const paintingSlice = createSlice({
   reducers: {
     setItems(state, action) {
       state.items = action.payload;
-      console.log("items changed with: ", action.payload);
     },
 
     setFilters(state, action) {

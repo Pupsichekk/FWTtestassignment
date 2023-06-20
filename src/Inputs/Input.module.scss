@@ -7,10 +7,22 @@
   overflow: hidden;
   text-overflow: ellipsis;
   background: transparent;
+  flex: 1 1 25%;
+  display: inline-block;
   color: black;
+
+  @media screen and (max-width: 1024px) {
+    width: inherit;
+  }
 
   &--dark {
     color: white;
     border: 1px solid white;
+    background: #0c0c0c;
+  }
+
+  &--light {
+    color: black;
+    border: 1px solid black;
   }
 }
