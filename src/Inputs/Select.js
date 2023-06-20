@@ -55,6 +55,12 @@ export const SelectAuthor = (props) => {
             color: `${theme === "dark" ? "white" : "black"}`,
           };
         },
+        singleValue: (baseStyles, state) => {
+          return {
+            ...baseStyles,
+            color: `${theme === "dark" ? "white" : "black"}`,
+          };
+        },
       }}
     />
   );
@@ -106,6 +112,12 @@ export const SelectLocation = (props) => {
           };
         },
         placeholder: (baseStyles, state) => {
+          return {
+            ...baseStyles,
+            color: `${theme === "dark" ? "white" : "black"}`,
+          };
+        },
+        singleValue: (baseStyles, state) => {
           return {
             ...baseStyles,
             color: `${theme === "dark" ? "white" : "black"}`,
