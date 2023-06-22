@@ -2,8 +2,8 @@ import Input from "./Input";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { paintingActions } from "../store/painting-slice";
-import { SelectAuthor, SelectLocation } from "./Select";
 import Range from "./Range";
+import Selects from "./Select";
 
 import styles from "./InputsContainer.module.scss";
 
@@ -45,18 +45,17 @@ const InputsContainer = (props) => {
   return (
     <div className={styles["inputs-container"]}>
       <Input nameOnChangeHandler={nameOnChangeHandler} placeholder="Name" type="text" />
-      <SelectAuthor isClearable={true} authorOnChangeHandler={authorOnChangeHandler} />
-      <SelectLocation isClearable={true} locationOnChangeHandler={locationOnChangeHandler} />
+      <Selects authorOnChangeHandler={authorOnChangeHandler} locationOnChangeHandler={locationOnChangeHandler} />
       <Range datesOnChangeHandler={datesOnChangeHandler}>
         <input
           className={`${styles["range-input"]} ${props.theme === "dark" && styles["range-input--dark"]}`}
-          placeholder="From"
+          placeholder="from"
           type="text"
         />
-        <span className={styles.line}></span>
+        <span className={`${styles.line} ${props.theme === "dark" && styles["line--dark"]}`}></span>
         <input
           className={`${styles["range-input"]} ${props.theme === "dark" && styles["range-input--dark"]}`}
-          placeholder="Before"
+          placeholder="before"
           type="text"
         />
       </Range>

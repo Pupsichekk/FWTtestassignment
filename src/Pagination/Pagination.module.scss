@@ -22,6 +22,11 @@
     border-right: none;
     color: black;
     background: inherit;
+
+    @media only screen and (max-width: 320px) {
+      width: calc(100vw / 7);
+      padding: 0;
+    }
     &.dark {
       border: 1px solid white;
       color: white;

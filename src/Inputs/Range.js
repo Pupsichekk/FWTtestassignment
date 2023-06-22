@@ -27,14 +27,14 @@ const Range = (props) => {
   return (
     <div
       ref={ref}
-      className={`${styles.range} ${theme === "dark" && styles["range--dark"]}`}
+      className={`${styles.range} ${isOpen && styles["range--open"]} ${theme === "dark" && styles["range--dark"]}`}
       aria-hidden="true"
       onClick={handleFormClick}
     >
       <span className={styles.range__title}>Created</span>
       {isOpen && (
         <div
-          className={`${styles.range__сontainer} ${theme === "dark" && styles["range__сontainer--dark"]}`}
+          className={`${styles["range__сontainer"]} ${theme === "dark" && styles["range__сontainer--dark"]}`}
           onClick={(e) => e.stopPropagation()}
           aria-hidden="true"
         >

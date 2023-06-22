@@ -40,9 +40,18 @@ const Painting = (props) => {
       <h2 className={`${styles["painting--overlay"]} ${isHovered ? styles["painting--overlay__active"] : ""}`}>
         {painting.name}
         <ul className={styles["painting--overlay__description"]}>
-          <li className={styles["painting--overlay__description--item"]}>Author: {author}</li>
-          <li className={styles["painting--overlay__description--item"]}>Created: {painting.created}</li>
-          <li className={styles["painting--overlay__description--item"]}>Location: {location}</li>
+          <li className={styles["painting--overlay__description--item"]}>
+            <span className={styles["painting--overlay__description--bold"]}>Author:</span>
+            <span className={styles["painting--overlay__description--thin"]}>{author}</span>
+          </li>
+          <li className={styles["painting--overlay__description--item"]}>
+            <span className={styles["painting--overlay__description--bold"]}>Created:</span>
+            <span className={styles["painting--overlay__description--thin"]}> {painting.created}</span>
+          </li>
+          <li className={styles["painting--overlay__description--item"]}>
+            <span className={styles["painting--overlay__description--bold"]}>Location:</span>
+            <span className={styles["painting--overlay__description--thin"]}> {location}</span>
+          </li>
         </ul>
       </h2>
     </div>

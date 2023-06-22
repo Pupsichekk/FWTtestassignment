@@ -1,5 +1,5 @@
 .input {
-  border: 1px solid black;
+  border: 1px solid #0c0c0c;
   border-radius: 8px;
   outline: none;
   padding: 0 15px;
@@ -9,19 +9,26 @@
   background: transparent;
   flex: 1 1 25%;
   display: inline-block;
-  color: black;
+  transition: all 0.1s;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  min-height: 45px;
+  color: #0c0c0c;
 
   @media screen and (max-width: 1024px) {
     width: inherit;
   }
 
   &--dark::placeholder {
-    color: white;
+    color: rgba(255, 255, 255, 0.3);
+
     opacity: 1;
   }
 
   &--light::placeholder {
-    color: black;
+    color: rgba(0, 0, 0, 0.3);
+
     opacity: 1; /* Firefox */
   }
 
@@ -32,7 +39,7 @@
   }
 
   &--light {
-    color: black;
-    border: 1px solid black;
+    color: #0c0c0c;
+    border: 1px solid #0c0c0c;
   }
 }

@@ -1,7 +1,7 @@
 import styles from "./Input.module.scss";
 import { useSelector } from "react-redux";
 
-const Input = ({ placeholder, type, nameOnChangeHandler }) => {
+const Input = ({ placeholder, type, nameOnChangeHandler, customStyles }) => {
   const theme = useSelector((state) => state.theme.theme);
   return (
     <input
