@@ -7,7 +7,7 @@
   margin-bottom: 20px;
 
   & button {
-    color: black;
+    color: #0c0c0c;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
@@ -18,9 +18,9 @@
     align-items: center;
     user-select: none;
     cursor: pointer;
-    border: 1px solid black;
+    border: 1px solid #0c0c0c;
     border-right: none;
-    color: black;
+    color: #0c0c0c;
     background: inherit;
 
     @media only screen and (max-width: 320px) {
@@ -56,8 +56,8 @@
     }
     &:hover {
       background: #ededed;
-      color: black;
-      border-color: black;
+      color: #0c0c0c;
+      border-color: #0c0c0c;
     }
     &:disabled {
       border-color: #b3b3b3;

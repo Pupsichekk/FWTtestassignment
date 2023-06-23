@@ -2,7 +2,7 @@ import styles from "./Paintings.module.scss";
 import Painting from "./Painting";
 import React from "react";
 
-const Paintings = React.memo((props) => {
+const Paintings = (props) => {
   return (
     <div className={styles.grid}>
       {props.items.map((painting) => {
@@ -10,6 +10,6 @@ const Paintings = React.memo((props) => {
       })}
     </div>
   );
-});
+};
 
-export default Paintings;
+export default React.memo(Paintings);

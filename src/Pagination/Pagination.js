@@ -2,6 +2,7 @@ import styles from "./Pagination.module.scss";
 import { useDispatch } from "react-redux";
 import { paginationActions } from "../store/pagination-slice";
 import PaginationButton from "./PaginationButton";
+import React from "react";
 import { useSelector } from "react-redux";
 
 const maxPage = 3;
@@ -82,4 +83,4 @@ const Pagination = (props) => {
     </div>
   );
 };
-export default Pagination;
+export default React.memo(Pagination);

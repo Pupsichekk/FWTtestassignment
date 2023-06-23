@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { paintingActions } from "../store/painting-slice";
 import Range from "./Range";
 import Selects from "./Select";
+import React from "react";
 
 import styles from "./InputsContainer.module.scss";
 
@@ -63,4 +64,4 @@ const InputsContainer = (props) => {
   );
 };
 
-export default InputsContainer;
+export default React.memo(InputsContainer);
