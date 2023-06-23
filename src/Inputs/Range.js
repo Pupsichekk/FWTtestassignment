@@ -45,7 +45,9 @@ const Range = (props) => {
         </div>
       )}
       <svg
-        className={`${styles.svg} ${theme === "dark" ? styles["svg--dark"] : styles["svg--light"]}`}
+        className={`${styles.svg} ${theme === "dark" ? styles["svg--dark"] : styles["svg--light"]} ${
+          isOpen ? styles["svg--rotate"] : ""
+        }`}
         width="10"
         height="6"
         viewBox="0 0 10 6"

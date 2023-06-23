@@ -20,7 +20,6 @@ function App() {
   // fetching painting data dynamically when page or filters change
   useEffect(() => {
     setIsLoading(true);
-    console.log("loading - true");
     const someFunction = async () => {
       await dispatch(fetchPaintingData({ page: curPage, ...painting.filters }));
       setIsLoading(false);

@@ -1,3 +1,4 @@
+@import "../mixins/svg.scss";
 .expand-select {
   flex: 1 1 25%;
 }
@@ -7,16 +8,5 @@
 }
 
 .svg {
-  display: inline-block;
-  fill: currentColor;
-  line-height: 1;
-  stroke: currentColor;
-  stroke-width: 0;
-  &--dark {
-    fill: rgba(255, 255, 255, 0.3);
-  }
-
-  &--light {
-    fill: rgba(0, 0, 0, 0.3);
-  }
+  @include svg;
 }
