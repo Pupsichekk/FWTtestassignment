@@ -53,6 +53,9 @@ const Selects = (props) => {
         ...baseStyles,
         color: `${theme === "dark" ? "white" : "black"}`,
         backgroundColor: `${theme === "dark" && "#0C0C0C"}`,
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
         "&:hover": {
           backgroundColor: `${theme === "dark" ? "white" : "#0c0c0c"}`,
           color: `${theme === "dark" ? "#0c0c0c" : "white"};`,
