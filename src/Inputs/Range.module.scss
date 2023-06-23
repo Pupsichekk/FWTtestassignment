@@ -60,3 +60,18 @@
     }
   }
 }
+
+.svg {
+  display: inline-block;
+  position: absolute;
+  right: 18px;
+  line-height: 1;
+  stroke-width: 0;
+  &--dark {
+    fill: rgba(255, 255, 255, 0.3);
+  }
+
+  &--light {
+    fill: rgba(0, 0, 0, 0.3);
+  }
+}

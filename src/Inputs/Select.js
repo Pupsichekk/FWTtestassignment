@@ -9,7 +9,7 @@ const Selects = (props) => {
     return (
       <components.DropdownIndicator {...props}>
         <svg
-          className={styles.svg}
+          className={`${styles.svg} ${theme === "dark" ? styles["svg--dark"] : styles["svg--light"]}`}
           width="10"
           height="6"
           viewBox="0 0 10 6"
@@ -100,8 +100,8 @@ const Selects = (props) => {
     },
     dropdownIndicator: (baseStyles) => ({
       ...baseStyles,
-      stroke: `${theme === "dark" ? "rgba(255, 255, 255, 0.3)" : "rgba(0, 0, 0, 0.3)"}`,
-      fill: `${theme === "dark" ? "rgba(255, 255, 255, 0.3)" : "rgba(0, 0, 0, 0.3)"}`,
+      stroke: `${theme === "dark" ? "rgba(255, 255, 255, 0.3)" : "rgba(0, 0, 0, 0.3)"}!important`,
+      fill: `${theme === "dark" ? "rgba(255, 255, 255, 0.3)" : "rgba(0, 0, 0, 0.3)"} !important`,
       paddingRight: "18px",
     }),
   };
@@ -113,12 +113,14 @@ const Selects = (props) => {
         isClearable={true}
         styles={componentStyles}
         authorOnChangeHandler={props.authorOnChangeHandler}
+        theme={theme}
       />
       <SelectLocation
         components={{ DropdownIndicator }}
         isClearable={true}
         styles={componentStyles}
         locationOnChangeHandler={props.locationOnChangeHandler}
+        theme={theme}
       />
     </>
   );
