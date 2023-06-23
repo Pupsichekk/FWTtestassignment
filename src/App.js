@@ -33,7 +33,6 @@ function App() {
       <InputsContainer theme={theme} />
       {isLoading ? <Spinner theme={theme} /> : <Paintings items={painting.items} theme={theme} />}
       <Pagination theme={theme} />
-      <div className="loader"></div>
     </main>
   );
 }
