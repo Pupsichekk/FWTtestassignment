@@ -82,7 +82,10 @@ const Selects = (props) => {
       return {
         ...baseStyles,
         marginTop: "0",
+        borderRadius: "0",
         backgroundColor: `${theme === "dark" ? "#0C0C0C" : "white"}`,
+        border: `${theme === "dark" ? "1px solid white" : "1px solid #0c0c0c"}`,
+        borderTop: "1px solid transparent",
       };
     },
     valueContainer: (baseStyles) => {
