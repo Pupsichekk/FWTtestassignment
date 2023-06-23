@@ -48,13 +48,13 @@ const InputsContainer = (props) => {
       <Selects authorOnChangeHandler={authorOnChangeHandler} locationOnChangeHandler={locationOnChangeHandler} />
       <Range datesOnChangeHandler={datesOnChangeHandler}>
         <input
-          className={`${styles["range-input"]} ${props.theme === "dark" && styles["range-input--dark"]}`}
+          className={`${styles["range--input"]} ${props.theme === "dark" && styles["range-input--dark"]}`}
           placeholder="from"
           type="text"
         />
         <span className={`${styles.line} ${props.theme === "dark" && styles["line--dark"]}`}></span>
         <input
-          className={`${styles["range-input"]} ${props.theme === "dark" && styles["range-input--dark"]}`}
+          className={`${styles["range--input"]} ${props.theme === "dark" && styles["range-input--dark"]}`}
           placeholder="before"
           type="text"
         />

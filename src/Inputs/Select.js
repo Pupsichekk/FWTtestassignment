@@ -57,6 +57,10 @@ const Selects = (props) => {
           backgroundColor: `${theme === "dark" ? "white" : "#0c0c0c"}`,
           color: `${theme === "dark" ? "#0c0c0c" : "white"};`,
         },
+        "&:focus": {
+          backgroundColor: `${theme === "dark" ? "white" : "#0c0c0c"}`,
+          color: `${theme === "dark" ? "#0c0c0c" : "white"};`,
+        },
       };
     },
     placeholder: (baseStyles) => {
