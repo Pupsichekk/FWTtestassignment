@@ -5,16 +5,17 @@ import PaginationButton from "./PaginationButton";
 import React from "react";
 import { useSelector } from "react-redux";
 
-const maxPage = 3;
-
-const arrayPages = [];
-for (let i = 0; i < maxPage; i++) {
-  arrayPages.push(i);
-}
-
 const Pagination = (props) => {
-  const currentPage = useSelector((state) => state.pagination.curPage);
   const dispatch = useDispatch();
+  const currentPage = useSelector((state) => state.pagination.curPage);
+  const maxItems = useSelector((state) => state.painting.allItems.length);
+  const maxPage = Math.ceil(maxItems / 12);
+  // if we were on n'th page and we have only n-1 available then set page to 1
+  if (currentPage > maxPage) dispatch(paginationActions.updatePage(1));
+  const arrayPages = [];
+  for (let i = 0; i < maxPage; i++) {
+    arrayPages.push(i);
+  }
 
   // Handling arrow elements
   const onPrevClick = () => {

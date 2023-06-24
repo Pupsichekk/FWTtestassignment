@@ -2,7 +2,7 @@ import "./App.scss";
 import { useEffect, useState } from "react";
 import Pagination from "./Pagination/Pagination";
 import React from "react";
-import { fetchPaintingData } from "./store/painting-slice";
+import { fetchPaintingData, fetchAllPaintingData } from "./store/painting-slice";
 import { useSelector, useDispatch } from "react-redux";
 import Paintings from "./Painting/Paintings";
 import InputsContainer from "./Inputs/InputsContainer";
@@ -26,6 +26,13 @@ function App() {
     };
     someFunction();
   }, [curPage, dispatch, painting.filters]);
+
+  useEffect(() => {
+    const getAllPaintings = async () => {
+      dispatch(fetchAllPaintingData({ ...painting.filters }));
+    };
+    getAllPaintings();
+  }, [dispatch, painting.filters]);
 
   return (
     <main className={`main ${theme === "light" ? "lightTheme" : "darkTheme"}`}>

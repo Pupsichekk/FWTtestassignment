@@ -9,9 +9,9 @@ export const fetchPaintingData = createAsyncThunk(
       if (isEmpty(filters)) {
         query = `https://test-front.framework.team/paintings?_page=${page}&_limit=12`; // query if no filters are found
       } else {
-        query = `https://test-front.framework.team/paintings?${filters.name && "&q=" + filters.name}${ 
-          filters.author && "&authorId=" + filters.author
-        }${filters.location && "&locationId=" + filters.location}${
+        query = `https://test-front.framework.team/paintings?_page=${page}&_limit=12${
+          filters.name && "&q=" + filters.name
+        }${filters.author && "&authorId=" + filters.author}${filters.location && "&locationId=" + filters.location}${
           filters.date && "&created_gte=" + filters.date.from + "&created_lte=" + filters.date.to
         }`;
         // query if there is at least one filter
@@ -19,14 +19,14 @@ export const fetchPaintingData = createAsyncThunk(
       const response = await fetch(query);
       if (!response.ok) throw new Error("Could not fetch painting data");
       const data = await response.json();
-      dispatch(paintingActions.setItems(data)); // setting items state 
+      dispatch(paintingActions.setItems(data)); // setting items state
     } catch (error) {
       console.log(error);
     }
   }
 );
 
-export const getPaintingLocation = createAsyncThunk("painting/getPaintingLocation", async (id = 0, { dispatch }) => {
+export const getPaintingLocation = createAsyncThunk("painting/getPaintingLocation", async (id = 0) => {
   try {
     const response = await fetch(`https://test-front.framework.team/locations?id=${id}`);
     const data = await response.json();
@@ -36,7 +36,7 @@ export const getPaintingLocation = createAsyncThunk("painting/getPaintingLocatio
   }
 });
 
-export const getPaintingAuthor = createAsyncThunk("painting/getPaintingAuthor", async (id = 0, { dispatch }) => {
+export const getPaintingAuthor = createAsyncThunk("painting/getPaintingAuthor", async (id = 0) => {
   try {
     const response = await fetch(`https://test-front.framework.team/authors?id=${id}`);
     const data = await response.json();
@@ -46,10 +46,33 @@ export const getPaintingAuthor = createAsyncThunk("painting/getPaintingAuthor", 
   }
 });
 
+export const fetchAllPaintingData = createAsyncThunk(
+  "painting/fetchAllPaintingData",
+  async ({ ...filters }, { dispatch }) => {
+    let query = "";
+    if (isEmpty(filters)) {
+      query = `https://test-front.framework.team/paintings`; // query if no filters are found
+    } else {
+      query = `https://test-front.framework.team/paintings?${filters.name && "&q=" + filters.name}${
+        filters.author && "&authorId=" + filters.author
+      }${filters.location && "&locationId=" + filters.location}${
+        filters.date && "&created_gte=" + filters.date.from + "&created_lte=" + filters.date.to
+      }`;
+      // query if there is at least one filter
+    }
+    const response = await fetch(query);
+    if (!response.ok) throw new Error("Could not fetch painting data");
+    const data = await response.json();
+    console.log(data);
+    dispatch(paintingActions.setAllItems(data));
+  }
+);
+
 const paintingSlice = createSlice({
   name: "painting",
   initialState: {
     items: [],
+    allItems: [],
     filters: {
       name: "",
       author: "",
@@ -69,6 +92,11 @@ const paintingSlice = createSlice({
         location: action.payload.location === undefined ? state.filters.location : action.payload.location,
         date: action.payload.dates === undefined ? state.filters.date : action.payload.dates,
       };
+    },
+
+    setAllItems(state, action) {
+      console.log("i'm called");
+      state.allItems = action.payload;
     },
   },
 });
