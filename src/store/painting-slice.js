@@ -62,26 +62,23 @@ export const getPaintingAuthor = createAsyncThunk("painting/getPaintingAuthor", 
   }
 });
 
-export const fetchAllPaintingData = createAsyncThunk(
-  "painting/fetchAllPaintingData",
-  async ({ ...filters }, { dispatch }) => {
-    let query = "";
-    if (isEmpty(filters)) {
-      query = `https://test-front.framework.team/paintings`; // query if no filters are found
-    } else {
-      query = `https://test-front.framework.team/paintings?${filters.name && "&q=" + filters.name}${
-        filters.author && "&authorId=" + filters.author
-      }${filters.location && "&locationId=" + filters.location}${
-        filters.date && "&created_gte=" + filters.date.from + "&created_lte=" + filters.date.to
-      }`;
-      // query if there is at least one filter
-    }
-    const response = await fetch(query);
-    if (!response.ok) throw new Error("Could not fetch painting data");
-    const data = await response.json();
-    dispatch(paintingActions.setAllItems(data));
+export const fetchAllPaintingData = createAsyncThunk("painting/fetchAllPaintingData", async (filters, { dispatch }) => {
+  let query = "";
+  if (isEmpty(filters)) {
+    query = `https://test-front.framework.team/paintings`; // query if no filters are found
+  } else {
+    query = `https://test-front.framework.team/paintings?${filters.name && "&q=" + filters.name}${
+      filters.author && "&authorId=" + filters.author
+    }${filters.location && "&locationId=" + filters.location}${
+      filters.date && "&created_gte=" + filters.date.from + "&created_lte=" + filters.date.to
+    }`;
+    // query if there is at least one filter
   }
-);
+  const response = await fetch(query);
+  if (!response.ok) throw new Error("Could not fetch painting data");
+  const data = await response.json();
+  dispatch(paintingActions.setAllItems(data));
+});
 
 const paintingSlice = createSlice({
   name: "painting",

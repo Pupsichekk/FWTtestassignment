@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Pagination from "./Pagination/Pagination";
 import React from "react";
 import { fetchPaintingData, fetchAllPaintingData } from "./store/painting-slice";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import Paintings from "./Painting/Paintings";
 import InputsContainer from "./Inputs/InputsContainer";
 import Header from "./UI/Header";
@@ -12,33 +12,30 @@ import Spinner from "./UI/Spinner";
 function App() {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
-
-  const painting = useSelector((state) => state.painting);
+  const filters = useSelector((state) => state.painting.filters, shallowEqual);
+  const items = useSelector((state) => state.painting.items, shallowEqual);
   const curPage = useSelector((state) => state.pagination.curPage);
   const theme = useSelector((state) => state.theme.theme);
 
   // fetching painting data dynamically when page or filters change
   useEffect(() => {
     setIsLoading(true);
-    const someFunction = async () => {
-      await dispatch(fetchPaintingData({ page: curPage, ...painting.filters }));
+    const getPaintingsPage = async () => {
+      dispatch(fetchPaintingData({ page: curPage, ...filters }));
       setIsLoading(false);
     };
-    someFunction();
-  }, [curPage, dispatch, painting.filters]);
-
-  useEffect(() => {
     const getAllPaintings = async () => {
-      dispatch(fetchAllPaintingData({ ...painting.filters }));
+      dispatch(fetchAllPaintingData(filters));
     };
+    getPaintingsPage();
     getAllPaintings();
-  }, [dispatch, painting.filters]);
+  }, [curPage, dispatch, filters]);
 
   return (
     <main className={`main ${theme === "light" ? "lightTheme" : "darkTheme"}`}>
       <Header theme={theme} />
       <InputsContainer theme={theme} />
-      {isLoading ? <Spinner theme={theme} /> : <Paintings items={painting.items} theme={theme} />}
+      {isLoading ? <Spinner theme={theme} /> : <Paintings items={items} theme={theme} />}
       <Pagination theme={theme} />
     </main>
   );

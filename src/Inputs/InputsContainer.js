@@ -34,8 +34,9 @@ const InputsContainer = (props) => {
   };
 
   useEffect(() => {
+    const filters = { name, author, location, dates };
     const timer = setTimeout(() => {
-      dispatch(paintingActions.setFilters({ name, author, location, dates }));
+      dispatch(paintingActions.setFilters(filters));
     }, 300);
 
     return () => {
