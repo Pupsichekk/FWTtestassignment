@@ -19,7 +19,23 @@ export const fetchPaintingData = createAsyncThunk(
       const response = await fetch(query);
       if (!response.ok) throw new Error("Could not fetch painting data");
       const data = await response.json();
-      dispatch(paintingActions.setItems(data)); // setting items state
+
+      // Updated query logic, instead of doing this in each painting individually, i'm doing this on initial page fetch, adding additional author/location data and only then updating store state.
+      const finalData = await Promise.all(
+        data.map(async (item) => {
+          const paintingLocation = async (item) => {
+            const location = await dispatch(getPaintingLocation(item.locationId));
+            const author = await dispatch(getPaintingAuthor(item.authorId));
+            return {
+              ...item,
+              author: author.payload,
+              location: location.payload,
+            };
+          };
+          return await paintingLocation(item);
+        })
+      );
+      dispatch(paintingActions.setItems(finalData)); // setting items state
     } catch (error) {
       console.log(error);
     }
@@ -63,7 +79,6 @@ export const fetchAllPaintingData = createAsyncThunk(
     const response = await fetch(query);
     if (!response.ok) throw new Error("Could not fetch painting data");
     const data = await response.json();
-    console.log(data);
     dispatch(paintingActions.setAllItems(data));
   }
 );
@@ -95,7 +110,6 @@ const paintingSlice = createSlice({
     },
 
     setAllItems(state, action) {
-      console.log("i'm called");
       state.allItems = action.payload;
     },
   },
