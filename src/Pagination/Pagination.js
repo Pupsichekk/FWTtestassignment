@@ -77,7 +77,7 @@ const Pagination = (props) => {
       <button
         className={props.theme === "dark" ? styles.dark : ""}
         onClick={onLastClick}
-        disabled={currentPage === maxPage ? true : false}
+        disabled={currentPage === maxPage || maxPage === 0 ? true : false}
       >
         &raquo;
       </button>
