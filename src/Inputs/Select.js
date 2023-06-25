@@ -1,10 +1,17 @@
 import React from "react";
 import Select, { components } from "react-select";
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "./Select.module.scss";
 
 const Selects = (props) => {
+  const authors = useSelector((state) => state.painting.authors);
+  const locations = useSelector((state) => state.painting.locations);
+  const finalizedAuthors = Object.values(authors).map((value) => {
+    return { value: value.id, label: value.name };
+  });
+  const finalizedLocations = Object.values(locations).map((value) => {
+    return { value: value.id, label: value.location };
+  });
   const DropdownIndicator = (props) => {
     return (
       <components.DropdownIndicator {...props}>
@@ -122,6 +129,7 @@ const Selects = (props) => {
         authorOnChangeHandler={props.authorOnChangeHandler}
         theme={theme}
         components={{ DropdownIndicator }}
+        authors={finalizedAuthors}
       />
       <SelectLocation
         isClearable={true}
@@ -129,31 +137,19 @@ const Selects = (props) => {
         locationOnChangeHandler={props.locationOnChangeHandler}
         theme={theme}
         components={{ DropdownIndicator }}
+        locations={finalizedLocations}
       />
     </>
   );
 };
 
 const SelectAuthor = (props) => {
-  useEffect(() => {
-    const getAuthors = async () => {
-      const res = await fetch("https://test-front.framework.team/authors");
-      const data = await res.json();
-      const newData = Object.values(data).map((value) => {
-        return { value: value.id, label: value.name };
-      });
-      setAuthors(newData);
-    };
-    getAuthors();
-  }, []);
-  const [authors, setAuthors] = useState([]);
-
   return (
     <Select
       className={styles["expand-select"]}
       isClearable={props.isClearable}
       onChange={props.authorOnChangeHandler}
-      options={authors}
+      options={props.authors}
       placeholder="Author"
       styles={props.styles}
       components={props.components}
@@ -162,25 +158,12 @@ const SelectAuthor = (props) => {
 };
 
 const SelectLocation = (props) => {
-  useEffect(() => {
-    const getLocations = async () => {
-      const res = await fetch("https://test-front.framework.team/locations");
-      const data = await res.json();
-      const newData = Object.values(data).map((value) => {
-        return { value: value.id, label: value.location };
-      });
-      setLocations(newData);
-    };
-    getLocations();
-  }, []);
-  const [locations, setLocations] = useState([]);
-
   return (
     <Select
       className={styles["expand-select"]}
       isClearable={props.isClearable}
       onChange={props.locationOnChangeHandler}
-      options={locations}
+      options={props.locations}
       placeholder="Location"
       styles={props.styles}
       components={props.components}

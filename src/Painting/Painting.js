@@ -5,6 +5,8 @@ const Painting = (props) => {
 
   // Could be redone some other way, but otherwise touchpad support is limited.
   const [isHovered, setIsHovered] = useState(false);
+  const author = props.authors.find((el) => el.id === painting.authorId);
+  const location = props.locations.find((el) => el.id === painting.locationId);
 
   return (
     <div
@@ -23,7 +25,7 @@ const Painting = (props) => {
         <ul className={styles["painting--overlay__description"]}>
           <li className={styles["painting--overlay__description--item"]}>
             <span className={styles["painting--overlay__description--bold"]}>Author:</span>
-            <span className={styles["painting--overlay__description--thin"]}>{painting.author}</span>
+            <span className={styles["painting--overlay__description--thin"]}>{author?.name}</span>
           </li>
           <li className={styles["painting--overlay__description--item"]}>
             <span className={styles["painting--overlay__description--bold"]}>Created:</span>
@@ -31,7 +33,7 @@ const Painting = (props) => {
           </li>
           <li className={styles["painting--overlay__description--item"]}>
             <span className={styles["painting--overlay__description--bold"]}>Location:</span>
-            <span className={styles["painting--overlay__description--thin"]}> {painting.location}</span>
+            <span className={styles["painting--overlay__description--thin"]}> {location?.location}</span>
           </li>
         </ul>
       </h2>

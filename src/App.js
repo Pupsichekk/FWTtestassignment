@@ -2,7 +2,12 @@ import "./App.scss";
 import { useEffect, useState } from "react";
 import Pagination from "./Pagination/Pagination";
 import React from "react";
-import { fetchPaintingData, fetchAllPaintingData } from "./store/painting-slice";
+import {
+  fetchPaintingData,
+  fetchAllPaintingData,
+  fetchAllAuthorData,
+  fetchAllLocationsData,
+} from "./store/painting-slice";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import Paintings from "./Painting/Paintings";
 import InputsContainer from "./Inputs/InputsContainer";
@@ -24,12 +29,32 @@ function App() {
       dispatch(fetchPaintingData({ page: curPage, ...filters }));
       setIsLoading(false);
     };
+
+    getPaintingsPage();
+  }, [curPage, dispatch, filters]);
+
+  // idk how to do this otherwise, different dependencies, first depends on curPage and filters
+  // second only on filters, and third depends on nothing and should be run only on mount
+  // documentation says it's fine though
+
+  useEffect(() => {
     const getAllPaintings = async () => {
       dispatch(fetchAllPaintingData(filters));
     };
-    getPaintingsPage();
     getAllPaintings();
-  }, [curPage, dispatch, filters]);
+  }, [dispatch, filters]);
+
+  useEffect(() => {
+    const getAllAuthors = async () => {
+      dispatch(fetchAllAuthorData());
+    };
+
+    const getAllLocations = async () => {
+      dispatch(fetchAllLocationsData());
+    };
+    getAllAuthors();
+    getAllLocations();
+  }, [dispatch]);
 
   return (
     <main className={`main ${theme === "light" ? "lightTheme" : "darkTheme"}`}>

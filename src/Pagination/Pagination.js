@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 const Pagination = (props) => {
   const dispatch = useDispatch();
   const currentPage = useSelector((state) => state.pagination.curPage);
-  const maxItems = useSelector((state) => state.painting.allItems.length);
+  const maxItems = useSelector((state) => state.painting.itemsLength);
   const maxPage = Math.ceil(maxItems / 12);
   const isZero = maxPage === 0;
   // if we were on n'th page and we have only n-1 available then set page to 1
