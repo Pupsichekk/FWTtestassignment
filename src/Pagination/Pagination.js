@@ -11,8 +11,6 @@ const Pagination = (props) => {
   const maxItems = useSelector((state) => state.painting.itemsLength);
   const maxPage = Math.ceil(maxItems / 12);
   const isZero = maxPage === 0;
-  // if we were on n'th page and we have only n-1 available then set page to 1
-  if (currentPage > maxPage && maxPage !== 0) dispatch(paginationActions.updatePage(1));
   const arrayPages = [];
   for (let i = 0; i < maxPage; i++) {
     arrayPages.push(i);
@@ -45,14 +43,14 @@ const Pagination = (props) => {
       <button
         className={props.theme === "dark" ? styles.dark : ""}
         onClick={onFirstClick}
-        disabled={currentPage > 1 || !isZero ? false : true}
+        disabled={currentPage > 1 && !isZero ? false : true}
       >
         &laquo;
       </button>
       <button
         className={props.theme === "dark" ? styles.dark : ""}
         onClick={onPrevClick}
-        disabled={currentPage - 1 > 0 || !isZero ? false : true}
+        disabled={currentPage - 1 > 0 && !isZero ? false : true}
       >
         {" "}
         &lsaquo;

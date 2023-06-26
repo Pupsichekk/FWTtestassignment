@@ -7,6 +7,7 @@ import Selects from "./Select";
 import React from "react";
 
 import styles from "./InputsContainer.module.scss";
+import { paginationActions } from "../store/pagination-slice";
 
 const InputsContainer = (props) => {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ const InputsContainer = (props) => {
   useEffect(() => {
     const filters = { name, author, location, dates };
     const timer = setTimeout(() => {
+      dispatch(paginationActions.updatePage(1));
       dispatch(paintingActions.setFilters(filters));
     }, 300);
 
